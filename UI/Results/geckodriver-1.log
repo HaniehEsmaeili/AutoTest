@@ -1,0 +1,32 @@
+1645994106248	geckodriver	INFO	Listening on 127.0.0.1:49840
+1645994109351	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49841" "-no-remote" "-profile" "C:\\Users\\D\\AppData\\Local\\Temp\\rust_mozprofilexyn5kC"
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs igd10umd64 v= and igd10iumd64 v=
+1645994114460	Marionette	INFO	Marionette enabled
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs igd10umd64 v= and igd10iumd64 v=
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs igd10umd64 v= and igd10iumd64 v=
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs igd10umd64 v= and igd10iumd64 v=
+[GFX1]: Potential driver version mismatch ignored due to missing DLLs igd10umd64 v= and igd10iumd64 v=
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\D\\AppData\\Local\\Temp\\rust_mozprofilexyn5kC\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://localhost:49841/devtools/browser/6c672af5-be52-4924-bf82-9e810bc2ed80
+1645994120908	Marionette	INFO	Listening on port 49846
+1645994122987	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1645994163287	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.js:235:19
+TimedPromise@chrome://remote/content/marionette/sync.js:220:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.digikala.com"
+console.warn: LoginRecipes: "getRecipes: falling back to a synchronous message for:" "https://www.digikala.com"
+console.error: "Could not write session state file " (new Error("Could not write chunk (size = 25927) to file C:\\Users\\D\\AppData\\Local\\Temp\\rust_mozprofilexyn5kC\\sessionstore-backups\\recovery.jsonlz4.tmp. The file may be corrupt.", (void 0), 106)) "DOMException@resource://gre/modules/PromiseWorker.jsm:106:18\npostMessage@resource://gre/modules/PromiseWorker.jsm:342:55\n"
+1645994188057	Marionette	INFO	Stopped listening on port 49846
+console.error: "Could not write session state file " (new Error("Could not write chunk (size = 25931) to file C:\\Users\\D\\AppData\\Local\\Temp\\rust_mozprofilexyn5kC\\sessionstore.jsonlz4.tmp. The file may be corrupt.", (void 0), 106)) "DOMException@resource://gre/modules/PromiseWorker.jsm:106:18\npostMessage@resource://gre/modules/PromiseWorker.jsm:342:55\n"
+JavaScript error: , line 0: AbortError: A request was aborted, for example through a call to IDBTransaction.abort.
+JavaScript error: , line 0: uncaught exception: null
+JavaScript error: , line 0: uncaught exception: null
+[Parent 5220, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][PContentChild] Error: RunMessage(msgname=PHttpChannel::Msg_DeleteSelf) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][PGPUParent] Error: RunMessage(msgname=PGPU::Msg_ShutdownVR) Channel closing: too late to send/recv, messages will be lost
+
