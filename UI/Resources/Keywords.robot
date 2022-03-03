@@ -10,38 +10,56 @@ Buying Operations
     Mouse Over  //span[text()='دسته‌بندی کالاها']
     Mouse Over  //p[text()='کالای دیجیتال']
     Click Element  //span[text()='اپل']
-    Sleep  7s
-    Execute Javascript  window.scrollTo(0, 1000)
-    Sleep  3s
-    Wait Until Element Is Enabled  //div[text()='نوع فروشنده']
-    Click Element  //div[text()='نوع فروشنده']
+    Wait Until Element Is Enabled  //div[text()='پرفروش‌ترین‌']
+    Wait Until Page Contains  جستجو‌های مرتبط
+    Wait Until Page Contains  فیلترها
+    
+    
+    # Execute JavaScript  window.document.getElementsByClassName('grow-1 color-700')[36].scrollIntoView()
+        # Execute Javascript  window.scrollTo(0, 500)
+    # Wait Until Page Contains  فیلترها
+    # Execute Javascript  window.scrollTo(0, 1000)
+    
+    Wait Until Element Is Visible  //*[text()="شبکه های ارتباطی"]
+    Run Keyword And Ignore Error  Scrole Element Into View  //*[text()="شبکه های ارتباطی"]
+    
+    Wait Until Element Is Enabled  //*[text()="شبکه های ارتباطی"]
+    Click Element  //*[text()="نوع فروشنده"]
+
     Click Element  //div[text()='دیجی‌کالا']
-    Sleep  3s
+    Wait Until Element Is Enabled  //div[text()='پرفروش‌ترین‌']
+    Execute Javascript  window.scrollTo(0, 300)
+    # Execute JavaScript | window.document.getElementById('your element id').scrollLeft += 250
+    Wait Until Page Contains Element  //div[text()='apple'] 
+    Wait Until Page Contains  جستجو‌های مرتبط
     Execute Javascript  window.scrollTo(0, 700)
-    Sleep  2s
-    Wait Until Element Is Enabled  //div[text()='برند']
-    Click Element  //div[text()='برند']
+    Wait Until Element Is Enabled  (//div[@class="pos-relative w-full d-flex flex-column ai-start py-3 border-b"])[1]
+    Click Element  (//div[@class="pos-relative w-full d-flex flex-column ai-start py-3 border-b"])[1]
     Click Element  //div[text()='اپل' and @class="text-subtitle-strong"]
-    Sleep  3s
-    Execute Javascript  window.scrollTo(0, 1000)
-    Sleep  2s
-    Execute Javascript  window.scrollTo(0, 1800)
-    Sleep  2s
-    Click Element  (//h2[@class="ellipsis-2 text-body2-strong color-700"])[11]
-    Sleep  5s
-    Wait Until Page Contains   گوشی موبایل اپل مدل   timeout=20s
-    Sleep  3s
-    # Wait Until Page Contains Element  //div[text()='افزودن به سبد']
-    # Set Focus To Element  //div[text()='افزودن به سبد']
-    # Scroll Element Into View  //div[text()='افزودن به سبد']
-    Execute Javascript  window.scrollTo(0, 1000) 
-    Wait Until Element Is Visible  //div[text()='افزودن به سبد']  
-    Set Focus To Element  //div[text()='افزودن به سبد']
-    Click Element  //div[text()='افزودن به سبد']
+    Wait Until Element Is Visible  //div[text()='پرفروش‌ترین‌']
+    Wait Until Page Contains  جستجو‌های مرتبط
+    Execute Javascript  window.scrollTo(0,1000)
+    Wait Until Element Is Visible  (//h2[@class="ellipsis-2 text-body2-strong color-700"])[5]
+    Click Element  (//h2[@class="ellipsis-2 text-body2-strong color-700"])[5]
+    Switch Window  NEW
+    Wait Until Page Contains   گوشی موبایل اپل    timeout=20s
+    Wait Until Element Is Not Visible  //div[@class='px-14 pt-10 pb-8 bg-000 w-max-content radius-medium border d-flex ai-center jc-center flex-column mx-auto']
+    Execute Javascript  window.scrollTo(0,200)
+    Wait Until Page Contains  ویژگی‌ها
+    Execute Javascript  window.scrollTo(0,500)
+    Wait Until Element Is Visible  //div[@id='__next']/div[1]/div[3]/div[3]/div[2]/div[2]/div[2]/div[2]/div[3]/div[1]/div[8]/div[1]/div[2]/div[3]/button[1]/div[2]
+    Click Element  //div[@id='__next']/div[1]/div[3]/div[3]/div[2]/div[2]/div[2]/div[2]/div[3]/div[1]/div[8]/div[1]/div[2]/div[3]/button[1]/div[2]
+    Wait Until Element Is Visible  (//p[@class='mr-1 text-body-2'])[2]        
     Click Element  //p[@class="mr-1 text-body-2" and text()='سبد خرید']
-    Page Should Contain  //div[text()='۱ کالا']
+    Switch Window  CURRENT
+    Wait Until Element Is Not Visible  //div[@class='px-14 pt-10 pb-8 bg-000 w-max-content radius-medium border d-flex ai-center jc-center flex-column mx-auto']
+    Wait Until Page Contains  سبد خرید شما
+    Page Should Contain  ۱ کالا
+    Wait Until Element Is Enabled  //div[text()='ادامه']
     Click Element  //div[text()='ادامه']
-    Page Should Contain  //div[@class="d-flex ai-center jc-center relative grow-1" and text()='انتخاب زمان ارسال']
+    Switch Window  CURRENT
+    Wait Until Element Is Not Visible  //div[@class='px-14 pt-10 pb-8 bg-000 w-max-content radius-medium border d-flex ai-center jc-center flex-column mx-auto']
+    Page Should Contain Element  //div[@class="d-flex ai-center jc-center relative grow-1" and text()='انتخاب زمان ارسال']
     Capture Page Screenshot
 
 
