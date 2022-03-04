@@ -1,5 +1,5 @@
 ***Settings***
-Library  SeleniumLibrary
+Library  Selenium2Library
 Documentation  Cheking Availability of Products in Digikala
 Resource  ../Resources/CommonFunctionallity.robot
 Resource  ../Resources/LoginFunctionallity.robot
@@ -16,5 +16,5 @@ Test Teardown  CommonFunctionallity.last operations
 checking availability of products
     [Documentation]  this test verifies availability of products in digikala
 
-    LoginFunctionallity.main operations  
+    # LoginFunctionallity.main operations  
     Check Availability Operations

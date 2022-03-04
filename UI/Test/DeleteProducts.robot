@@ -1,6 +1,6 @@
 ***Settings***
 Documentation  Test For Deleting Products in Digikala
-Library  SeleniumLibrary
+Library  Selenium2Library
 
 Resource  ../Resources/CommonFunctionallity.robot
 Resource  ../Resources/LoginFunctionallity.robot
@@ -16,7 +16,7 @@ Test Teardown  CommonFunctionallity.last operations
 Deleting Product in Digikala
     [Documentation]  this test verifies deleting products from cart
 
-    LoginFunctionallity.main operations
+    # LoginFunctionallity.main operations
     Buying Operations
     Deleting Operations
 

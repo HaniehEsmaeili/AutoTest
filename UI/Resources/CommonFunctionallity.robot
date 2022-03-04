@@ -1,5 +1,5 @@
 ***Settings***
-Library  SeleniumLibrary
+Library  Selenium2Library
 
 
 ***Keywords***
@@ -12,4 +12,4 @@ first operations
 
 last operations
     Sleep  5s
-    Close Browser
+    # Close Browser

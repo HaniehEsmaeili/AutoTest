@@ -1,6 +1,6 @@
 ***Settings***
 Documentation  Test Buying Product in Digikala
-Library  SeleniumLibrary
+Library  Selenium2Library
 
 Resource  ../Resources/CommonFunctionallity.robot
 Resource  ../Resources/LoginFunctionallity.robot
