@@ -1,7 +1,7 @@
 ***Settings***
 Documentation  Keywords of Test Scenarioes
 Library  Selenium2Library
-# Resource  ../Resources/Variables.robot
+Resource  Variables.robot
 
 
 ***Keywords***
@@ -11,6 +11,9 @@ Buying Operations
     Mouse Over  ${categoryLocator}
     Mouse Over  ${degitalProductsLocator}
     Click Element  ${appleBrandInDegitalProductsLocator}
+
+    Wait Until Element Is Visible  ${bestSelling}
+    Click Element  ${bestSelling}
 
     Wait Until Element Is Visible  ${sellerTypeLocator}
     Run Keyword And Ignore Error  Scroll Element Into View  ${sellerTypeLocator}
@@ -51,21 +54,18 @@ Buying Operations
     Wait Until Element Is Visible  ${cartLocator}
     Click Element  ${cartLocator}
 
-
     Switch Window  CURRENT
-
     Wait Until Element Is Not Visible  ${splashScreenLocator}
     Page Should Contain  ${cartPageContainOneProduct}
     Wait Until Element Is Enabled  ${continueBtnLocator}
     Click Element  ${continueBtnLocator}
 
-
-
     Switch Window  CURRENT
-
     Wait Until Element Is Not Visible  ${splashScreenLocator}
     Page Should Contain  ${selectTimeBtnLocator}
     Capture Page Screenshot
+
+
 
 
 Check Availability Operations
@@ -88,11 +88,13 @@ Check Availability Operations
         
     Wait Until Element Is Visible  ${phoneH1TitleLocator}
     Run Keyword And Ignore Error  Scroll Element Into View  ${phoneH1TitleLocator}
-    Wait Until Element Is Enabled  ${phoneH1TitleLocator}
+    Wait Until Element Is Enabled  ${nextPageBtnLocator}
     Click Element  ${nextPageBtnLocator}
 
-    Wait Until Element Is Visible  ${firstProductInListLocator}
-    Click Element  ${firstProductInListLocator}
+    Wait Until Element Is Visible  ${randomProductInListLocator}
+    Run Keyword And Ignore Error  Scroll Element Into View   ${randomProductInListLocator}
+    Wait Until Element Is Enabled  ${randomProductInListLocator}
+    Click Element  ${randomProductInListLocator}
 
 
     Switch Window  NEW
@@ -100,11 +102,16 @@ Check Availability Operations
     Wait Until Element Is Visible  ${noticeMeBtnLocator}
     Wait Until Element Is Not Visible  ${splashScreenLocator}    
     Click Element  ${noticeMeBtnLocator}
-    # Wait Until Element Is Visible  (//p[@class="text-button-2 color-700 pos-relative top-1"])[3]
-    # Click Element  (//p[@class="text-button-2 color-700 pos-relative top-1"])[3]
-    # Click Button  //button[@class="relative d-flex ai-center user-select-none Button_module_btn__2510bed4 text-button-1 Button_module_btn_Primary__2510bed4 radius-medium w-full w-unset-lg px-10 py-1 text-button-1"]
-    # Page Should Contain Element  //div[text()='دیگر لازم نیست خبرم کنید']
+    Wait Until Element Is Visible  ${individualMessageLocator}
+    Click Element  ${individualMessageLocator}
+    Click Button  ${registerLocator}
+    
+    Switch Window  CURRENT 
+    Wait Until Element Is Not Visible  ${splashScreenLocator}
+    Page Should Contain Element  ${dontNoticeMeBtnLocator}
     Capture Page Screenshot
+
+
 
 
 Deleting Operations
@@ -113,8 +120,56 @@ Deleting Operations
     Wait Until Element Is Enabled  ${mainCartBtnLocator}
     Click Element  ${mainCartBtnLocator}
     
+    Switch Window  CURRENT
     Wait Until Element Is Visible  ${firstItemDeleteBtnLocator}
     Click Element  ${firstItemDeleteBtnLocator}
+
     Wait Until Element Is Visible  ${emptyBasketImgInEmptyCartPageLocator}
-    Page Should Contain  ${emptyCartText}
+    Page Should Contain Element  ${emptyCartText}
     Capture Page Screenshot
+
+
+Data Driven Test
+    [Arguments]  ${type}
+    
+    Mouse Over  ${categoryLocator}
+    Click Element   ${bookAndArtLocator}
+
+    Wait Until Page Contains Element  ${magazinesAndMapsLocator}
+    Run Keyword And Ignore Error  Scroll Element Into View  ${magazinesAndMapsLocator}
+    Wait Until Element Is Enabled  ${magazinesAndMapsLocator}
+    Wait Until Element Is Visible  ${magazinesAndMapsLogo}
+    Click Element  ${magazinesAndMapsLogo}
+
+    Switch Window  CURRENT
+    Wait Until Element Is Visible  ${magazinesLocator}
+    Click Element  ${magazinesLocator}
+
+    Switch Window  CURRENT 
+    Wait Until Element Is Visible  ${type}
+    Click Element  ${type}
+
+    Switch Window  CURRENT
+    Wait Until Element Is Visible  ${coverTypeLocator}
+    Run Keyword And Ignore Error  Scroll Element Into View  ${coverTypeLocator}
+    Wait Until Element Is Enabled  ${coverTypeLocator}
+    Click Element  ${coverTypeLocator}
+
+    Wait Until Element Is Visible  ${scrollUntil}
+    Run Keyword And Ignore Error  Scroll Element Into View  ${scrollUntil}
+    Wait Until Element Is Enabled  ${scrollUntil}
+    Click Element  ${paperAsTypeLocatore}
+
+    Switch Window  CURRENT
+    Wait Until Element Is Visible  ${randomBookLocator}
+    Run Keyword And Ignore Error  Scroll Element Into View  ${randomBookLocator}
+    Wait Until Element Is Enabled  ${randomBookLocator}
+    Click Element  ${randomBookLocator}
+
+
+    Switch Window  NEW
+    
+    Wait Until Page Contains   ${featuresText} 
+    Wait Until Element Is Not Visible  ${splashScreenLocator}    
+    Page Should Contain  ${paperTypeText}
+    Capture Page Screenshot   

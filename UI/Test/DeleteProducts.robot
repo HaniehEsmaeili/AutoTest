@@ -16,7 +16,7 @@ Test Teardown  CommonFunctionallity.last operations
 Deleting Product in Digikala
     [Documentation]  this test verifies deleting products from cart
 
-    # LoginFunctionallity.main operations
+    LoginFunctionallity.Login Operations
     Buying Operations
     Deleting Operations
 

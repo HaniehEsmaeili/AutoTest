@@ -1,5 +1,6 @@
 ***Settings***
 Library  Selenium2Library
+Resource  Variables.robot
 
 
 ***Keywords***
@@ -8,8 +9,8 @@ first operations
     Set Selenium Timeout  ${timeout}
     Open Browser  ${url}  ${browser} 
     Maximize Browser Window  
-    Sleep  2s
+    
 
 last operations
-    Sleep  5s
-    # Close Browser
+    Sleep  3s
+    Close Browser

@@ -17,7 +17,7 @@ Buying Product
     [Documentation]  this test verifies buying product in digikala
  
     
-    # LoginFunctionallity.main operations  
+    LoginFunctionallity.Login Operations
     Buying Operations 
 
 

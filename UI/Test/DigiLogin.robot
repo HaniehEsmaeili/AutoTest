@@ -15,7 +15,5 @@ Test Teardown  CommonFunctionallity.last operations
 Verify Login in Digikala
     [Documentation]  this test verifies login in digikala website
 
-    LoginFunctionallity.main operations 
-    Capture Page Screenshot   
-
+    LoginFunctionallity.Login Operations 
 

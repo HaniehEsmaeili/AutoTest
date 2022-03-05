@@ -16,5 +16,5 @@ Test Teardown  CommonFunctionallity.last operations
 checking availability of products
     [Documentation]  this test verifies availability of products in digikala
 
-    # LoginFunctionallity.main operations  
+    LoginFunctionallity.Login Operations   
     Check Availability Operations
