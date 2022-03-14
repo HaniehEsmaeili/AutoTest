@@ -1,6 +1,3 @@
-***Settings***
-Library  Selenium2Library
-
 ***Variables***
 
 
@@ -71,3 +68,5 @@ ${randomBookLocator}  (//h2[@class="ellipsis-2 text-body2-strong color-700"])[1]
 ${featuresText}  ویژگی‌ها
 ${coverType:}  //div[@class='d-flex']/following-sibling::p
 ${paperTypeText}  کاغذی
+${internalMagazineTypeLocator}  //div[text()='مجلات داخلی']
+${externalMagazineTypeLocator}  //div[text()='مجلات خارجی']

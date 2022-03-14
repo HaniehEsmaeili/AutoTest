@@ -7,8 +7,8 @@ Resource  ../Resources/Variables.robot
 Resource  ../Resources/Keywords.robot
 
 Force Tags  Cheking
-Test Setup  CommonFunctionallity.first operations
-Test Teardown  CommonFunctionallity.last operations
+Test Setup  first operations
+Test Teardown  last operations
 
 
 
@@ -16,5 +16,5 @@ Test Teardown  CommonFunctionallity.last operations
 checking availability of products
     [Documentation]  this test verifies availability of products in digikala
 
-    LoginFunctionallity.Login Operations   
+    Login Operations   
     Check Availability Operations

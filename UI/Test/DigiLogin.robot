@@ -6,8 +6,8 @@ Resource  ../Resources/Variables.robot
 Resource  ../Resources/Keywords.robot
 
 Force Tags  Login
-Test Setup  CommonFunctionallity.first operations
-Test Teardown  CommonFunctionallity.last operations
+Test Setup  first operations
+Test Teardown  last operations
 
 
 
@@ -15,5 +15,5 @@ Test Teardown  CommonFunctionallity.last operations
 Verify Login in Digikala
     [Documentation]  this test verifies login in digikala website
 
-    LoginFunctionallity.Login Operations 
+    Login Operations 
 

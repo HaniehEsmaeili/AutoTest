@@ -12,5 +12,4 @@ first operations
     
 
 last operations
-    Sleep  3s
     Close Browser

@@ -8,8 +8,8 @@ Resource  ../Resources/Variables.robot
 Resource  ../Resources/Keywords.robot
 
 Force Tags  Buying
-Test Setup  CommonFunctionallity.first operations
-Test Teardown  CommonFunctionallity.last operations
+Test Setup  first operations
+Test Teardown  last operations
 
 
 ***Test Cases***
@@ -17,7 +17,7 @@ Buying Product
     [Documentation]  this test verifies buying product in digikala
  
     
-    LoginFunctionallity.Login Operations
+    Login Operations
     Buying Operations 
 
 

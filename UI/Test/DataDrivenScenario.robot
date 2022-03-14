@@ -8,13 +8,13 @@ Resource  ../Resources/Keywords.robot
 
 
 Force Tags  DataDriven
-Suite Setup    CommonFunctionallity.first operations
-Suite Teardown   CommonFunctionallity.last operations
+Suite Setup    first operations
+Suite Teardown   last operations
 Test Template  Data Driven Test
 
 ***Test Cases***                                         TYPE
-Data Driven Test - Internal Magazine         //div[text()='مجلات داخلی']
-Data Driven Test - External Magazine         //div[text()='مجلات خارجی']
+Data Driven Test - Internal Magazine         ${internalMagazineTypeLocator}
+Data Driven Test - External Magazine         ${externalMagazineTypeLocator}
         
 
 

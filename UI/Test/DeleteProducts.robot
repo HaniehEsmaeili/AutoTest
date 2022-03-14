@@ -8,15 +8,15 @@ Resource  ../Resources/Keywords.robot
 Resource  ../Resources/Variables.robot
 
 Force Tags  Deleting
-Test Setup  CommonFunctionallity.first operations
-Test Teardown  CommonFunctionallity.last operations
+Test Setup  first operations
+Test Teardown  last operations
 
 
 ***Test Cases***
 Deleting Product in Digikala
     [Documentation]  this test verifies deleting products from cart
 
-    LoginFunctionallity.Login Operations
+    Login Operations
     Buying Operations
     Deleting Operations
 
