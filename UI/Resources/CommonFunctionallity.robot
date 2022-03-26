@@ -1,6 +1,11 @@
 ***Settings***
 Library  Selenium2Library
-Resource  Variables.robot
+
+***Variables***
+${url}  https://www.digikala.com
+${browser}  chrome
+${speed}  0 second  
+${timeout}  60s
 
 
 ***Keywords***

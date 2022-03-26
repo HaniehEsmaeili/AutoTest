@@ -2,21 +2,13 @@
 Library    RequestsLibrary
 Library  Collections
 
+Resource  ../Resources/ResourceOfScenario3.robot
 
-***Variables ***
-${url}    https://reqres.in
-${uri}    /api/register
 
 ***Test Cases ***
-POST Email
-    Create Session  thirdSession  ${url}
-    ${body}=  Create Dictionary      email= sydney@fifa
-    ${headers}=  Create Dictionary  Content_Type=application/json  Accept=application/json
-    ${response}=    Post Request    thirdSession    ${uri}   json=${body}   headers=${headers}
 
-    Log To Console    ${response.status_code}
-    Log To Console    ${response}
-
-#Validations
-    ${status_code}=  Convert To String  ${response.status_code}
-    Should Be Equal  ${status_code}  400
+Put Information
+    Creating Session
+    Headers & Response & Body
+    Log To Console Variables
+    Validation Of Status_Code

@@ -1,41 +1,32 @@
 ***Settings***
 Library  RequestsLibrary
 Library  Collections
+Library  JSONLibrary
+Library  ../Library/GtoJ.py
+
+Resource  ../Resources/ResourceOfScenario4.robot
+
+
 
 ***Variables***
 ${url}  https://reqres.in
 ${uri}  /api/users
+${name}  morpheus
+${job}  leader
+${email}  morpheus@gmail.com
+${Content_Type}  application/json
+${Accept}  application/json
+${newName}  david
+${newEmail}  david@gmail.com
 
 ***Test Cases ***
+
 Post New user
-    Create Session  ForthSession  ${url}
-    ${body}=  Create Dictionary  name= morpheus  job=leader  email=morpheus@gmail.com
-    ${headers}=  Create Dictionary  Content_Type=application/json  Accept=application/json
-    ${response}=  Post Request  ForthSession  ${uri}  json=${body}  headers=${headers}
-    
-    Log To Console  ${response.status_code}
-    Log To Console  ${response.content}
+    Creating Session
+    Log To Console Variables
+    Validation Of Status_Code
 
-#Validation
-    ${status_code}=    Convert To string    ${response.status_code}
-    should be equal  ${status_code}  201
-
-
-Put New Info
-    Create Session  ForthSession  ${url}
-    ${body}=  Create Dictionary  name=david  job=leader  email=david@gmail.com
-    ${headers}=  Create Dictionary  Content_Type=application/json  Accept=application/json
-    ${response}=  Post Request  ForthSession  ${uri}/329  json=${body}  headers=${headers}
-    
-    Log To Console  ${response.status_code}
-    Log To Console  ${response.content}
-
-#Validation
-    ${status_code}=    Convert To string    ${response.status_code}
-    should be equal  ${status_code}  201
-
-    ${body}=  Convert To String  ${response.content} 
-    Should Contain  ${body}  "name":"david"
-    Should Contain  ${body}  "email":"david@gmail.com"
-    Length Should Be   id  2
-
+Put New Information
+    Creating New Session
+    Validations
+    Convert Date
