@@ -1,114 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.1.3 (Python 3.9.0 on win32)" generated="20220319 14:30:49.639" rpa="false" schemaversion="2">
-<suite id="s1" name="Scenario1" source="C:\Users\D\Desktop\hani\AutoTest\API\TestCases\Scenario1.robot">
-<test id="s1-t1" name="Get On Session">
-<kw name="Creating Session" library="ResourceOfScenario1">
+<robot generator="Robot 4.1.3 (Python 3.9.0 on win32)" generated="20220329 12:36:29.209" rpa="false" schemaversion="2">
+<suite id="s1" name="Scenario2" source="C:\Users\D\Desktop\hani\AutoTest\API\TestCases\Scenario2.robot">
+<test id="s1-t1" name="POST Information">
+<kw name="Creating Session" library="ResourceOfScenario2">
 <kw name="Create Session" library="RequestsLibrary">
-<arg>firstSession</arg>
+<arg>secondsession</arg>
 <arg>${url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20220319 14:30:49.822" level="INFO">Creating Session using : alias=firstSession, url=https://gorest.co.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20220319 14:30:49.821" endtime="20220319 14:30:49.822"/>
+<msg timestamp="20220329 12:36:29.550" level="INFO">Creating Session using : alias=secondsession, url=https://reqres.in, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220329 12:36:29.549" endtime="20220329 12:36:29.550"/>
 </kw>
-<status status="PASS" starttime="20220319 14:30:49.821" endtime="20220319 14:30:49.822"/>
+<status status="PASS" starttime="20220329 12:36:29.549" endtime="20220329 12:36:29.551"/>
 </kw>
-<kw name="Headers &amp; Response" library="ResourceOfScenario1">
+<kw name="Headers &amp; Response &amp; Body" library="ResourceOfScenario2">
+<kw name="Load JSON From File" library="JSONLibrary">
+<var>${Info}</var>
+<arg>C:/Users/D/Desktop/hani/AutoTest/API/Resources/Information.json</arg>
+<doc>Load JSON from file.</doc>
+<msg timestamp="20220329 12:36:29.553" level="INFO">${Info} = {'name': 'morpheus', 'job': 'leader', 'email': 'morpheus@gmail.com'}</msg>
+<status status="PASS" starttime="20220329 12:36:29.552" endtime="20220329 12:36:29.553"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${Name}</var>
+<arg>${Info}</arg>
+<arg>$.name</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20220329 12:36:29.608" level="INFO">${Name} = ['morpheus']</msg>
+<status status="PASS" starttime="20220329 12:36:29.553" endtime="20220329 12:36:29.608"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${Job}</var>
+<arg>${Info}</arg>
+<arg>$.job</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20220329 12:36:29.639" level="INFO">${Job} = ['leader']</msg>
+<status status="PASS" starttime="20220329 12:36:29.608" endtime="20220329 12:36:29.639"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${Name}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220329 12:36:29.640" level="INFO">${Name} = ['morpheus']</msg>
+<status status="PASS" starttime="20220329 12:36:29.640" endtime="20220329 12:36:29.640"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${Job}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220329 12:36:29.640" level="INFO">${Job} = ['leader']</msg>
+<status status="PASS" starttime="20220329 12:36:29.640" endtime="20220329 12:36:29.640"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=${Name[0]}</arg>
+<arg>job=${Job[0]}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220329 12:36:29.642" level="INFO">${body} = {'name': 'morpheus', 'job': 'leader'}</msg>
+<status status="PASS" starttime="20220329 12:36:29.641" endtime="20220329 12:36:29.642"/>
+</kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content_Type=${Content_Type}</arg>
 <arg>Accept=${Accept}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20220319 14:30:49.825" level="INFO">${headers} = {'Content_Type': 'application/json', 'Accept': 'application/json'}</msg>
-<status status="PASS" starttime="20220319 14:30:49.823" endtime="20220319 14:30:49.825"/>
+<msg timestamp="20220329 12:36:29.643" level="INFO">${headers} = {'Content_Type': 'application/json', 'Accept': 'application/json'}</msg>
+<status status="PASS" starttime="20220329 12:36:29.642" endtime="20220329 12:36:29.643"/>
 </kw>
-<kw name="Get Request" library="RequestsLibrary">
+<kw name="Post Request" library="RequestsLibrary">
 <var>${response}</var>
-<arg>firstSession</arg>
+<arg>secondsession</arg>
 <arg>${uri}</arg>
-<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
-<msg timestamp="20220319 14:30:49.825" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
-<msg timestamp="20220319 14:30:52.339" level="INFO">GET Request : url=https://gorest.co.in/public/v1/posts/123/comments 
- path_url=/public/v1/posts/123/comments 
- headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20220329 12:36:29.643" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220329 12:36:30.758" level="INFO">POST Request : url=https://reqres.in/api/user 
+ path_url=/api/user 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': 'application/json', 'Connection': 'keep-alive', 'Content_Type': 'application/json', 'Content-Length': '37', 'Content-Type': 'application/json'} 
+ body=b'{"name": "morpheus", "job": "leader"}' 
  </msg>
-<msg timestamp="20220319 14:30:52.339" level="INFO">GET Response : url=https://gorest.co.in/public/v1/posts/123/comments 
- status=200, reason=OK 
- headers={'Server': 'nginx', 'Date': 'Sat, 19 Mar 2022 21:30:51 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Vary': 'Accept-Encoding, Origin', 'X-Frame-Options': 'SAMEORIGIN', 'X-XSS-Protection': '0', 'X-Content-Type-Options': 'nosniff', 'X-Download-Options': 'noopen', 'X-Permitted-Cross-Domain-Policies': 'none', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'ETag': 'W/"996e3e39561b73e0aaf72fec3fa2ca2d"', 'Cache-Control': 'max-age=0, private, must-revalidate', 'X-Request-Id': '8189e21a-af51-4c9d-a9fa-fb5859f5116c', 'X-Runtime': '0.007001', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains', 'Content-Encoding': 'gzip'} 
- body={"meta":{"pagination":{"total":0,"pages":0,"page":1,"limit":20,"links":{"previous":null,"current":null,"next":null}}},"data":[]} 
+<msg timestamp="20220329 12:36:30.758" level="INFO">POST Response : url=https://reqres.in/api/user 
+ status=201, reason=Created 
+ headers={'Date': 'Tue, 29 Mar 2022 19:36:29 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '83', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"53-znlrb8RyGzVeRgGcPGky3dnt/aA"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Expect-CT': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=gYi6viH%2BBCRkbSX3YEByi19TALoel%2BGAing0uDAeLVck7Wzpedxcoyt%2B8%2FhhkirkkDVlFdMCsvjiPRY1eZZSlzY6bJjf6de0d32dMS5XIziFxzKmoq9m90QTjq0%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '6f3b0e007e136d92-MUC', 'alt-svc': 'h3=":443"; ma=86400, h3-29=":443"; ma=86400'} 
+ body={"name":"morpheus","job":"leader","id":"97","createdAt":"2022-03-29T19:36:29.587Z"} 
  </msg>
-<msg timestamp="20220319 14:30:52.339" level="INFO">c:\users\d\appdata\local\programs\python\python39\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'gorest.co.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20220329 12:36:30.758" level="INFO">c:\users\d\appdata\local\programs\python\python39\lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20220319 14:30:52.340" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220319 14:30:49.825" endtime="20220319 14:30:52.341"/>
+<msg timestamp="20220329 12:36:30.759" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20220329 12:36:29.643" endtime="20220329 12:36:30.759"/>
 </kw>
 <kw name="Set Test Variable" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<msg timestamp="20220319 14:30:52.341" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20220319 14:30:52.341" endtime="20220319 14:30:52.342"/>
+<msg timestamp="20220329 12:36:30.760" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20220329 12:36:30.759" endtime="20220329 12:36:30.760"/>
 </kw>
-<status status="PASS" starttime="20220319 14:30:49.823" endtime="20220319 14:30:52.342"/>
+<status status="PASS" starttime="20220329 12:36:29.551" endtime="20220329 12:36:30.760"/>
 </kw>
-<kw name="Log To Console Variables" library="ResourceOfScenario1">
+<kw name="Log To Console Variables" library="ResourceOfScenario2">
 <kw name="Log To Console" library="BuiltIn">
 <arg>${response.status_code}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220319 14:30:52.343" endtime="20220319 14:30:52.344"/>
+<status status="PASS" starttime="20220329 12:36:30.761" endtime="20220329 12:36:30.762"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220319 14:30:52.345" endtime="20220319 14:30:52.346"/>
+<status status="PASS" starttime="20220329 12:36:30.762" endtime="20220329 12:36:30.763"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.headers}</arg>
+<arg>${Name[0]}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220319 14:30:52.346" endtime="20220319 14:30:52.349"/>
+<status status="PASS" starttime="20220329 12:36:30.763" endtime="20220329 12:36:30.766"/>
 </kw>
-<status status="PASS" starttime="20220319 14:30:52.342" endtime="20220319 14:30:52.349"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Job[0]}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220329 12:36:30.766" endtime="20220329 12:36:30.768"/>
 </kw>
-<kw name="Validation Of Status_Code" library="ResourceOfScenario1">
+<status status="PASS" starttime="20220329 12:36:30.761" endtime="20220329 12:36:30.768"/>
+</kw>
+<kw name="Validation Of Status_Code" library="ResourceOfScenario2">
 <kw name="Convert To String" library="BuiltIn">
 <var>${status_code}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20220319 14:30:52.352" level="INFO">${status_code} = 200</msg>
-<status status="PASS" starttime="20220319 14:30:52.351" endtime="20220319 14:30:52.352"/>
+<msg timestamp="20220329 12:36:30.776" level="INFO">${status_code} = 201</msg>
+<status status="PASS" starttime="20220329 12:36:30.772" endtime="20220329 12:36:30.777"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>${status_code}</arg>
-<arg>200</arg>
+<arg>${expectedStatusCode}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20220319 14:30:52.352" endtime="20220319 14:30:52.354"/>
+<status status="PASS" starttime="20220329 12:36:30.777" endtime="20220329 12:36:30.780"/>
 </kw>
-<status status="PASS" starttime="20220319 14:30:52.350" endtime="20220319 14:30:52.355"/>
+<status status="PASS" starttime="20220329 12:36:30.770" endtime="20220329 12:36:30.781"/>
 </kw>
-<kw name="Validation Of Body" library="ResourceOfScenario1">
-<kw name="Convert To String" library="BuiltIn">
+<kw name="Validation Of Body" library="ResourceOfScenario2">
+<kw name="To Json" library="RequestsLibrary">
 <var>${body}</var>
 <arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20220319 14:30:52.362" level="INFO">${body} = {"meta":{"pagination":{"total":0,"pages":0,"page":1,"limit":20,"links":{"previous":null,"current":null,"next":null}}},"data":[]}</msg>
-<status status="PASS" starttime="20220319 14:30:52.357" endtime="20220319 14:30:52.362"/>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<msg timestamp="20220329 12:36:30.784" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg timestamp="20220329 12:36:30.787" level="INFO">To JSON using : content={"name":"morpheus","job":"leader","id":"97","createdAt":"2022-03-29T19:36:29.587Z"} </msg>
+<msg timestamp="20220329 12:36:30.787" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20220329 12:36:30.787" level="INFO">${body} = {'name': 'morpheus', 'job': 'leader', 'id': '97', 'createdAt': '2022-03-29T19:36:29.587Z'}</msg>
+<status status="PASS" starttime="20220329 12:36:30.784" endtime="20220329 12:36:30.787"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${getName}</var>
 <arg>${body}</arg>
-<arg>"page":1</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20220319 14:30:52.363" endtime="20220319 14:30:52.364"/>
+<arg>$.name</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20220329 12:36:30.852" level="INFO">${getName} = ['morpheus']</msg>
+<status status="PASS" starttime="20220329 12:36:30.787" endtime="20220329 12:36:30.852"/>
 </kw>
-<kw name="Should Contain" library="BuiltIn">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${getJob}</var>
 <arg>${body}</arg>
-<arg>"data":[]</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20220319 14:30:52.365" endtime="20220319 14:30:52.366"/>
+<arg>$.job</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20220329 12:36:30.881" level="INFO">${getJob} = ['leader']</msg>
+<status status="PASS" starttime="20220329 12:36:30.852" endtime="20220329 12:36:30.881"/>
 </kw>
-<status status="PASS" starttime="20220319 14:30:52.356" endtime="20220319 14:30:52.366"/>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${getName[0]}</arg>
+<arg>${nameFeature}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220329 12:36:30.881" endtime="20220329 12:36:30.882"/>
 </kw>
-<status status="PASS" starttime="20220319 14:30:49.820" endtime="20220319 14:30:52.368"/>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${getJob[0]}</arg>
+<arg>${jobFeature}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220329 12:36:30.882" endtime="20220329 12:36:30.883"/>
+</kw>
+<status status="PASS" starttime="20220329 12:36:30.782" endtime="20220329 12:36:30.884"/>
+</kw>
+<doc>Post Information</doc>
+<status status="PASS" starttime="20220329 12:36:29.548" endtime="20220329 12:36:30.884"/>
 </test>
-<status status="PASS" starttime="20220319 14:30:49.641" endtime="20220319 14:30:52.371"/>
+<doc>Scenario2</doc>
+<status status="PASS" starttime="20220329 12:36:29.212" endtime="20220329 12:36:30.886"/>
 </suite>
 <statistics>
 <total>
@@ -117,10 +188,11 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Scenario1">Scenario1</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Scenario2">Scenario2</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20220319 14:30:49.825" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg timestamp="20220329 12:36:29.643" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20220329 12:36:30.784" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
 </errors>
 </robot>
