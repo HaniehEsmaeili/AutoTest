@@ -13,6 +13,8 @@ ${passwordTextBox}  //input[@name='password']
 ${enter}  //div[text()='ورود']
 ${confirm}  //div[text()='تایید']
 ${checkAccountInfo}  //div[@class='pos-relative pointer shrink-0 ml-2 ml-0-lg']
+${notificationLocator}  //p[text()='آخرین اطلاعات را از ما دریافت کنید!']
+${laterLocator}  //a[@class='int-subs-btn-link']
 
 
 
@@ -29,6 +31,8 @@ Enter Information
     Click Element   ${confirm}  
 
 Checking Validity Of Account
+    Wait Until Element is Visible  ${notificationLocator}
+    Click Element  ${laterLocator}
     Wait Until Element is Visible  ${checkAccountInfo}
     Press Keys  ${checkAccountInfo}  [Return]
     Page Should Contain  ${username}
