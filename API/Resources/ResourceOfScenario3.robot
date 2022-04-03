@@ -20,7 +20,7 @@ Creating Session
     Create Session  thirdSession  ${url}
 
 Headers & Response & Body
-    ${Info}=  Load JSON From File  C:/Users/D/Desktop/hani/AutoTest/API/Resources/Information3.json
+    ${Info}=  Load JSON From File  ${CURDIR}/Information3.json
     ${Email}=  Get Value From JSON  ${Info}  $.email
     ${body}=  Create Dictionary      email= ${Email[0]}
     Set Test Variable  ${Email}

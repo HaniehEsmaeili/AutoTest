@@ -2,7 +2,7 @@
 Documentation  Resource Of Scenarion4
 Library  RequestsLibrary
 Library  Collections
-Library  os
+Library  OperatingSystem
 Library  JSONLibrary
 Library  ../Library/GtoJ.py
 
@@ -25,36 +25,34 @@ ${lengthOfId}  3
 
 Creating Session
     Create Session  forthSession  ${url}
-    ${Info}=  Load JSON From File  C:/Users/D/Desktop/hani/AutoTest/API/Resources/Information.json
+
+Update JSON File
+    ${Info}=  Load Json From File  ${CURDIR}/Information.json
     ${Name}=  Get Value From JSON  ${Info}  $.name
     ${Job}=  Get Value From JSON  ${Info}  $.job
     Set Test Variable  ${Job}
     ${Email}=  Get Value From JSON  ${Info}  $.email
-    ${body}=  Create Dictionary  name=${Name[0]}  job=${Job[0]}  email=${Email[0]}
+    ${JSON}=  Update Value To JSON  ${Info}  $.name  ${updatedName}
+    ${JSON}=  Update Value To JSON  ${Info}  $.email  ${updatedEmail}
+    ${newName}=  Get Value From Json  ${JSON}  $.name
+    Set Test Variable  ${newName}
+    ${newEmail}=  Get Value From Json  ${JSON}  $.email
+    Set Test Variable  ${newEmail}
+
+Posting Request
+    ${body}=  Create Dictionary  name=${newName[0]}  job=${Job[0]}  email=${newEmail[0]}
     ${headers}=  Create Dictionary  Content_Type=${Content_Type}  Accept=${Accept}
     ${response}=  Post Request  forthSession  ${uri}  json=${body}  headers=${headers}
     Set Test Variable  ${response}
+
+Log To Console Variables
+    Log To Console  ${response.status_code}
+    Log To Console  ${response.content}
 
 Validation Of Status_Code
     ${status_code}=    Convert To string    ${response.status_code}
     should be equal  ${status_code}  ${expectedStatusCode}
 
-Update Information
-    ${NewInfo}=  Load JSON From File   C:/Users/D/Desktop/hani/AutoTest/API/Resources/NewInfo.json
-    ${NewName}=  Get Value From JSON   ${NewInfo}   $.name
-    ${NewEmail}=  Get Value From JSON  ${NewInfo}  $.email
-    ${body}=  Create Dictionary  name=${NewName[0]}  job=${Job[0]}  email=${NewEmail[0]}
-    ${headers}=  Create Dictionary  Content_Type=${Content_Type}  Accept=${Accept}
-    ${response}=  Post Request  ForthSession  ${uri}  json=${body}  headers=${headers}
-    Set Test Variable  ${body}
-    Set Test Variable  ${response}
-    Set Test Variable  ${NewName}
-    Set Test Variable  ${NewEmail}
-    Set Test Variable  ${NewInfo}
-
-Log To Console Variables
-    Log To Console  ${response.status_code}
-    Log To Console  ${response.content}
 
 Validations
     ${body}=  To Json  ${response.content} 
@@ -62,10 +60,9 @@ Validations
     ${getName}=  Get Value From Json  ${body}  $.name
     ${getEmail}=  Get Value From Json  ${body}  $.email
     ${getId}=  Get Value From Json  ${body}  $.id
-    Should Be Equal  ${getName[0]}  ${updatedName}
-    Should Be Equal  ${getEmail[0]}  ${updatedEmail}
+    Should Be Equal  ${getName[0]}  ${newName[0]}
+    Should Be Equal  ${getEmail[0]}  ${newEmail[0]}
     Length Should Be   ${getId[0]}  ${lengthOfId}
-    
 
 Convert Date
     ${json}=  To Json  ${response.content} 
@@ -74,4 +71,8 @@ Convert Date
     ${stringCreatedAt}=    Convert JSON To String    ${createdAt}
     ${jalaliCreatedAt}=  parseAndConvert  ${stringCreatedAt}
     Log To Console  ${jalaliCreatedAt}
+
+
+
+
 

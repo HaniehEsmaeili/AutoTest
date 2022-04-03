@@ -22,7 +22,7 @@ Creating Session
     Create Session    secondsession    ${url}
 
 Headers & Response & Body
-    ${Info}=  Load JSON From File  C:/Users/D/Desktop/hani/AutoTest/API/Resources/Information.json
+    ${Info}=  Load JSON From File  ${CURDIR}/Information.json
     ${Name}=  Get Value From JSON  ${Info}  $.name
     ${Job}=  Get Value From JSON  ${Info}  $.job
     Set Test Variable  ${Name}

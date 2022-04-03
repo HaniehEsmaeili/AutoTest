@@ -15,8 +15,9 @@ Update Information
     [Documentation]  Update Information
 
     Creating Session
+    Update JSON File
+    Posting Request
     Log To Console Variables
     Validation Of Status_Code
-    Update Information
     Validations
     Convert Date
